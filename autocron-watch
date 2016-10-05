@@ -8,7 +8,7 @@ if [ -f "$LIST_PATH" ]; then
   truncate -s 0 "$LIST_PATH"
 fi
 
-for PROJECT_YII_PATH in $(find "$PROJECTS_PATH" -executable -type f -name "yii" -not -path "*tests*" -not -path "*vendor*"); do
+for PROJECT_YII_PATH in $(find -L "$PROJECTS_PATH" -executable -type f -name "yii" -not -path "*tests*" -not -path "*vendor*" -not -path "*releases/[0-9]*"); do
   PROJECT_NAME=`basename $(dirname "$PROJECT_YII_PATH")`
   if [[ -n $("$PHP_PATH" "$PROJECT_YII_PATH" | grep cron) ]]; then
     echo "$PROJECT_YII_PATH" >> "$LIST_PATH"
