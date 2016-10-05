@@ -3,6 +3,10 @@
 PHP_PATH="/usr/local/php/bin/php"
 LIST_PATH="./list"
 
+if [ ! -f "$LIST_PATH" ]; then
+  exit 0;
+fi
+
 for PROJECT_YII_PATH in $(cat "$LIST_PATH"); do
   "$PHP_PATH" "$PROJECT_YII_PATH" cron
 done

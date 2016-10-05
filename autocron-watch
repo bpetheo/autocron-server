@@ -4,7 +4,7 @@ PHP_PATH="/usr/local/php/bin/php"
 PROJECTS_PATH="/data/apache/htdocs/"
 LIST_PATH="./list"
 
-if [[ -f "$LIST_PATH" ]]; then
+if [ -f "$LIST_PATH" ]; then
   truncate -s 0 "$LIST_PATH"
 fi
 
